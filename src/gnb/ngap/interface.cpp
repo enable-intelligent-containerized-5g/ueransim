@@ -114,6 +114,8 @@ void NgapTask::sendNgSetupRequest(int amfId)
     if (amf == nullptr)
         return;
 
+    m_logger->debug("Dest AMF: %d", amf->amfName);
+    
     amf->state = EAmfState::WAITING_NG_SETUP;
 
     // TODO: this procedure also re-initialises the NGAP UE-related contexts (if any)

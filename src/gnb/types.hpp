@@ -21,6 +21,11 @@
 #include <asn/ngap/ASN_NGAP_QosFlowSetupRequestList.h>
 #include <asn/rrc/ASN_RRC_InitialUE-Identity.h>
 
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <string>
+
 namespace nr::gnb
 {
 
@@ -43,6 +48,16 @@ struct SctpAssociation
     int associationId{};
     int inStreams{};
     int outStreams{};
+
+    // // Sobrecarga del operador << para imprimir SctpAssociation
+    // friend std::ostream& operator<<(std::ostream& os, const SctpAssociation& assoc) {
+    //     os << "SctpAssociation{"
+    //         << " associationId: " << assoc.associationId
+    //         << ", inStreams: " << assoc.inStreams
+    //         << ", outStreams: " << assoc.outStreams
+    //         << " }";
+    //     return os;
+    // }
 };
 
 struct Guami
@@ -104,6 +119,24 @@ struct NgapAmfContext
     OverloadInfo overloadInfo{};
     std::vector<ServedGuami *> servedGuamiList{};
     std::vector<PlmnSupport *> plmnSupportList{};
+
+    // // Sobrecarga del operador << para imprimir NgapAmfContext
+    // friend std::ostream& operator<<(std::ostream& os, const NgapAmfContext& ctx) {
+    //     os << "NgapAmfContext{ "
+    //         << "ctxId: " << ctx.ctxId
+    //         << ", association: {" << ctx.association << "}"
+    //         << ", nextStream: " << ctx.nextStream
+    //         << ", address: " << ctx.address
+    //         << ", port: " << ctx.port
+    //         << ", amfName: " << ctx.amfName
+    //         << ", relativeCapacity: " << ctx.relativeCapacity
+    //         << ", state: " << static_cast<int>(ctx.state)
+    //         // << ", overloadInfo: {" << ctx.overloadInfo << "}"
+    //         << ", servedGuamiList size: " << ctx.servedGuamiList.size()
+    //         << ", plmnSupportList size: " << ctx.plmnSupportList.size()
+    //         << " }";
+    //     return os;
+    // }
 };
 
 struct RlsUeContext
